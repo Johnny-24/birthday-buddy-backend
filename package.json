@@ -1,0 +1,18 @@
+{
+  "name": "birthday-buddy-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Johnny-24/birthday-buddy-backend.git",
+  "author": "Johnny <dos_24@inbox.ru>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
