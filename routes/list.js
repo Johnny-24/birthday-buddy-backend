@@ -30,9 +30,13 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-
+    const item = await List.findByPk(+req.params.id)
+    item.name = req.body.name
+    item.date = req.body.date
+    await item.save()
+    res.status(200).json({item})
   } catch (e) {
     console.log(e)
     res.status(500).json({
@@ -41,9 +45,16 @@ router.put('/:id', (req, res) => {
   }
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-
+    const list = await List.findAll({
+      where: {
+        id: +req.params.id
+      }
+    })
+    const item = list[0]
+    await item.destroy()
+    res.status(204).json({})
   } catch (e) {
     console.log(e)
     res.status(500).json({
