@@ -4,10 +4,13 @@ const listRoutes = require('./routes/list')
 const app = express()
 const PORT = process.env.PORT || 3000
 
+app.use(express.json())
+
 app.use('/api/list', listRoutes)
 
 async function start() {
   try {
+    // await sequelize.sync({force: true})
     await sequelize.sync()
     app.listen(PORT)
   } catch (e) {
